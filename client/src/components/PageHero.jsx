@@ -1,0 +1,2 @@
+import AnimatedSection from './AnimatedSection.jsx';
+export default function PageHero({eyebrow,title,description,children}){return <section className="page-shell pt-32 pb-12 sm:pt-40 sm:pb-16"><AnimatedSection><p className="eyebrow">{eyebrow}</p><h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-[-.045em] sm:text-6xl lg:text-7xl">{title}</h1><p className="mt-6 max-w-2xl text-base leading-8 text-white/60 sm:text-lg">{description}</p>{children&&<div className="mt-8">{children}</div>}</AnimatedSection></section>}

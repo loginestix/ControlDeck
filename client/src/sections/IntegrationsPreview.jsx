@@ -1,0 +1,4 @@
+import { Radio, Youtube, Github, Code2, Monitor, Apple, MessageSquare, FileText } from 'lucide-react';
+import AnimatedSection from '../components/AnimatedSection.jsx';
+const apps=[['OBS',Radio],['YouTube',Youtube],['Discord',MessageSquare],['Notion',FileText],['GitHub',Github],['VS Code',Code2],['Windows',Monitor],['macOS',Apple]];
+export default function IntegrationsPreview(){return <AnimatedSection className="page-shell py-24 text-center"><p className="eyebrow">Integrations</p><h2 className="section-title mx-auto mt-4 max-w-3xl">Your tools, one command center.</h2><div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4">{apps.map(([n,I])=><div key={n} className="surface flex items-center gap-3 rounded-2xl p-4 text-left"><I className="h-5 w-5 text-white/70"/><span className="text-sm font-medium">{n}</span></div>)}</div></AnimatedSection>}

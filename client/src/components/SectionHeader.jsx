@@ -1,0 +1,1 @@
+export default function SectionHeader({eyebrow,title,copy}){return <div className="mb-10 max-w-3xl"><p className="eyebrow">{eyebrow}</p><h2 className="section-title mt-4">{title}</h2>{copy&&<p className="mt-4 leading-7 text-white/55">{copy}</p>}</div>}
