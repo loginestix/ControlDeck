@@ -1,0 +1,4 @@
+import { Download } from 'lucide-react';
+import Button from '../components/Button.jsx';
+import AnimatedSection from '../components/AnimatedSection.jsx';
+export default function FinalCTA(){return <AnimatedSection className="page-shell py-24"><div className="relative overflow-hidden rounded-[36px] border border-violet-400/20 bg-violet-500/10 px-6 py-16 text-center sm:px-12"><div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,.12),transparent_40%)]"/><div className="relative"><p className="eyebrow">Ready when you are</p><h2 className="section-title mx-auto mt-4 max-w-3xl">Your control center for everything you create.</h2><p className="mx-auto mt-5 max-w-xl text-white/55">Build a deck around your workflow, not the other way around.</p><div className="mt-8 flex justify-center"><Button to="/download" className="gap-2"><Download className="h-4 w-4"/>Download Control Deck</Button></div></div></div></AnimatedSection>}

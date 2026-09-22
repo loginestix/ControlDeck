@@ -1,0 +1,1 @@
+import {Star} from 'lucide-react'; export default function Rating({value}){return <span className="inline-flex items-center gap-1 text-sm text-white/65"><Star size={14} fill="currentColor"/>{value}</span>}
