@@ -30,6 +30,7 @@ import ReleaseNotes from './pages/ReleaseNotes.jsx';
 import InstallationGuide from './pages/InstallationGuide.jsx';
 import CreatorGuidelines from './pages/CreatorGuidelines.jsx';
 import SignIn from './pages/SignIn.jsx';
+import SignUp from './pages/SignUp.jsx';
 import Admin from './pages/Admin.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -73,5 +74,6 @@ export default function App() {
       <Route path="*" element={<NotFound />} />
     </Route>
     <Route path="signin" element={<SignIn />} />
+    <Route path="signup" element={<SignUp />} />
   </Routes>
 }

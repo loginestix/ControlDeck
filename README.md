@@ -38,6 +38,10 @@ The marketplace keeps the existing Control Deck visual system but now includes p
 
 Only OBS Studio is published at launch. The old demonstration plugin packages are intentionally excluded.
 
+## Create the first administrator
+
+Set `ADMIN_EMAIL`, `ADMIN_PASSWORD` (16–128 characters), and optionally `ADMIN_NAME` in the server environment, then run `npm run admin:create --prefix server` once. The command creates the account or safely promotes the matching account to `admin`. Remove `ADMIN_PASSWORD` from the hosting environment immediately afterward. Sign in at `/signin`, then open `/admin`.
+
 ## Connect the installed desktop app
 
 After deploying the API over HTTPS, set `apiBaseUrl` in the desktop project's `marketplace-config.json` to:

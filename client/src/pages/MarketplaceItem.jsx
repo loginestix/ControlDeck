@@ -3,7 +3,6 @@ import { ArrowLeft, Check, ChevronRight, Download, LockKeyhole, ShoppingBag, Shi
 import Rating from '../components/Rating.jsx';
 import MarketplaceCard from '../components/MarketplaceCard.jsx';
 import MarketplacePreviewArt from '../components/MarketplacePreviewArt.jsx';
-import { marketplace } from '../data/marketplaceData.js';
 import { useMarketplaceCatalog } from '../hooks/useMarketplaceCatalog.js';
 
 export default function MarketplaceItem() {

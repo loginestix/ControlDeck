@@ -70,6 +70,8 @@ export default function Navbar() {
             Sign In
           </Link>
 
+          <Link to="/signup" className="text-sm text-white/65 transition hover:text-white">Create account</Link>
+
           <Button
             to="/download"
             variant="secondary"
@@ -79,7 +81,7 @@ export default function Navbar() {
           </Button>
 
           <Button
-            to="/download"
+            to="/signup"
             className="px-4 py-2.5"
           >
             Get Started
@@ -370,6 +372,11 @@ export default function Navbar() {
                   }}
                 >
 
+                  <div className="mb-4 grid grid-cols-2 gap-3">
+                    <Link to="/signin" onClick={closeMenu} className="rounded-xl border border-white/10 px-4 py-3 text-center text-sm text-white/65 transition hover:bg-white/5 hover:text-white">Sign in</Link>
+                    <Link to="/signup" onClick={closeMenu} className="rounded-xl border border-violet-400/20 bg-violet-400/[.08] px-4 py-3 text-center text-sm text-violet-100 transition hover:bg-violet-400/[.14]">Create account</Link>
+                  </div>
+
                   {/* DOWNLOAD */}
                   <div
                     onClick={closeMenu}
@@ -390,7 +397,7 @@ export default function Navbar() {
                     className="mt-5 w-full"
                   >
                     <Button
-                      to="/download"
+                      to="/signup"
                       className="w-full"
                     >
                       Get Started

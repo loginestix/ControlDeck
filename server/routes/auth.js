@@ -12,7 +12,7 @@ r.post('/register',async(req,res,next)=>{try{
   const name=String(req.body?.name||'').trim().slice(0,80);
   const email=String(req.body?.email||'').trim().toLowerCase();
   const password=String(req.body?.password||'');
-  if(name.length<2||!emailPattern.test(email)||password.length<12)return res.status(400).json({message:'Enter a valid name, email, and password of at least 12 characters.'});
+  if(name.length<2||!emailPattern.test(email)||password.length<12||password.length>128)return res.status(400).json({message:'Enter a valid name, email, and password between 12 and 128 characters.'});
   if(await User.findOne({email}))return res.status(409).json({message:'Email already registered'});
   const u=await User.create({name,email,password:await bcrypt.hash(password,12)});
   res.status(201).json({token:token(u),user:publicUser(u)});
