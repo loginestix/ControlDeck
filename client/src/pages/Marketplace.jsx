@@ -21,8 +21,8 @@ export function MarketplaceHome(){
   const store=useOutletContext();
   const {items}=useMarketplaceCatalog();
   const featured=useMemo(()=>items.filter(x=>x.featured).sort((a,b)=>b.popular-a.popular).slice(0,6),[items]);
-  const categories=[['Plugins','Install verified integrations and actions.']];
-  const lead=featured[0]; const LeadIcon=lead.icon;
+  const categories=['Plugins','Icons'];
+  const lead=featured[0];
   return <>
     <section className="overflow-hidden rounded-3xl border border-white/10 bg-white/[.025]">
       <div className="grid lg:grid-cols-[1.05fr_.95fr]">
@@ -37,7 +37,6 @@ export function MarketplaceHome(){
         </div>
         <div className="border-t border-white/10 p-4 lg:border-l lg:border-t-0 lg:p-5">
           <MarketplacePreviewArt item={lead} to={`/marketplace/${lead.slug}`} className="h-full min-h-[310px]">
-            <div className="absolute right-6 top-6 grid h-16 w-16 place-items-center rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm transition duration-300 group-hover:-translate-y-1"><LeadIcon className="h-7 w-7 text-violet-200"/></div>
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-black/60 p-5 backdrop-blur-md"><p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/45">Featured · {lead.category}</p><h3 className="mt-2 text-2xl font-semibold tracking-[-.025em]">{lead.name}</h3><p className="mt-2 max-w-md text-sm leading-6 text-white/55">{lead.tagline}</p><span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-violet-200">View product <ArrowRight size={14}/></span></div>
           </MarketplacePreviewArt>
         </div>
@@ -46,7 +45,7 @@ export function MarketplaceHome(){
 
     <section className="mt-10">
       <div className="mb-5"><p className="eyebrow">Browse Control Deck</p><h2 className="mt-2 text-2xl font-semibold tracking-[-.025em]">Choose what you want to add.</h2></div>
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{categories.map(([name,copy])=><Link key={name} to={`/marketplace/control-deck?tab=${encodeURIComponent(name)}`} className="group rounded-2xl border border-white/10 bg-white/[.025] p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/[.045]"><p className="text-sm font-semibold text-white">{name}</p><p className="mt-2 text-xs leading-5 text-white/38">{copy}</p><ArrowRight size={14} className="mt-5 text-white/28 transition group-hover:translate-x-1 group-hover:text-violet-200"/></Link>)}</div>
+      <div className="flex flex-wrap gap-3">{categories.map(name=><Link key={name} to={name==='Plugins'?`/marketplace/control-deck?tab=${name}`:'/icons'} className="rounded-xl border border-white/10 bg-white/[.025] px-6 py-3 text-sm font-semibold text-white/65 transition hover:border-violet-400/30 hover:bg-violet-400/[.06] hover:text-white">{name}</Link>)}</div>
     </section>
 
     <Section title="Official release" copy="Verified and maintained for the current Control Deck desktop application." items={featured} store={store} action={<Link to="/marketplace/control-deck" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-200 hover:text-violet-100">View plugin <ArrowRight size={14}/></Link>}/>

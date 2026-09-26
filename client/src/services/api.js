@@ -22,4 +22,8 @@ export const api={
   checkout:(slugs)=>request('/payments/checkout-session',{method:'POST',body:JSON.stringify({slugs})}),
   contact:(data)=>request('/contact',{method:'POST',body:JSON.stringify(data)}),
   adminOverview:()=>request('/admin/overview'),
+  adminUsers:(q='')=>request(`/admin/users${q?`?q=${encodeURIComponent(q)}`:''}`),
+  adminUpdateUser:(id,data)=>request(`/admin/users/${encodeURIComponent(id)}`,{method:'PATCH',body:JSON.stringify(data)}),
+  adminMessages:(status='')=>request(`/admin/messages${status?`?status=${encodeURIComponent(status)}`:''}`),
+  adminUpdateMessage:(id,status)=>request(`/admin/messages/${encodeURIComponent(id)}`,{method:'PATCH',body:JSON.stringify({status})}),
 };

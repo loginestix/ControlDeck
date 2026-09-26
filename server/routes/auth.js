@@ -22,6 +22,7 @@ r.post('/login',async(req,res,next)=>{try{
   const email=String(req.body?.email||'').trim().toLowerCase();
   const u=await User.findOne({email}).select('+password');
   if(!u||!await bcrypt.compare(String(req.body?.password||''),u.password))return res.status(401).json({message:'Invalid credentials'});
+  if(u.active===false)return res.status(403).json({message:'This account has been disabled. Contact support for help.'});
   res.json({token:token(u),user:publicUser(u)});
 }catch(e){next(e)}});
 

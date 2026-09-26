@@ -61,6 +61,8 @@ export default function App() {
       <Route path="terms" element={<Terms />} />
       <Route path="licenses" element={<Licenses />} />
       <Route path="admin" element={<Admin />} />
+      <Route path="signin" element={<SignIn />} />
+      <Route path="signup" element={<SignUp />} />
 
       <Route path="marketplace" element={<MarketplaceShell />}>
         <Route index element={<MarketplaceHome />} />
@@ -73,7 +75,5 @@ export default function App() {
 
       <Route path="*" element={<NotFound />} />
     </Route>
-    <Route path="signin" element={<SignIn />} />
-    <Route path="signup" element={<SignUp />} />
   </Routes>
 }

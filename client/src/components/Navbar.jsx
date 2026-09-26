@@ -63,15 +63,6 @@ export default function Navbar() {
 
         {/* DESKTOP ACTIONS */}
         <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            to="/signin"
-            className="text-sm text-white/65 transition hover:text-white"
-          >
-            Sign In
-          </Link>
-
-          <Link to="/signup" className="text-sm text-white/65 transition hover:text-white">Create account</Link>
-
           <Button
             to="/download"
             variant="secondary"
@@ -371,11 +362,6 @@ export default function Navbar() {
                     ease: 'easeOut',
                   }}
                 >
-
-                  <div className="mb-4 grid grid-cols-2 gap-3">
-                    <Link to="/signin" onClick={closeMenu} className="rounded-xl border border-white/10 px-4 py-3 text-center text-sm text-white/65 transition hover:bg-white/5 hover:text-white">Sign in</Link>
-                    <Link to="/signup" onClick={closeMenu} className="rounded-xl border border-violet-400/20 bg-violet-400/[.08] px-4 py-3 text-center text-sm text-violet-100 transition hover:bg-violet-400/[.14]">Create account</Link>
-                  </div>
 
                   {/* DOWNLOAD */}
                   <div

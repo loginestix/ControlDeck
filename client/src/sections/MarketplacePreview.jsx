@@ -1,49 +1,12 @@
 import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, PlugZap } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection.jsx';
-import Rating from '../components/Rating.jsx';
 import MarketplacePreviewArt from '../components/MarketplacePreviewArt.jsx';
-import { marketplace } from '../data/catalog.js';
+import { useMarketplaceCatalog } from '../hooks/useMarketplaceCatalog.js';
 
-export default function MarketplacePreview() {
-  const previewSlugs = ['scene-pilot', 'audio-router', 'live-director', 'deep-work-station', 'precision-line', 'signal-blocks', 'orbit-grid', 'studio-signals'];
-  const items = previewSlugs.map(slug => marketplace.find(item => item.slug === slug)).filter(Boolean);
-  return <AnimatedSection className="page-shell py-24">
-    <div className="">
-      <p className="eyebrow">Marketplace</p>
-      <div className="mt-4 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-        <h2 className="section-title">Discover. Install. Make it yours.</h2>
-        <Link to="/marketplace" className="text-sm text-violet-300 transition hover:text-violet-200">Explore marketplace →</Link>
-      </div>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{items.map((item) => {
-        const Icon = item.icon;
-        return <article key={item.slug} className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#0d1016]">
-          <div className="rounded-2xl">
-            <MarketplacePreviewArt item={item} to={`/marketplace/${item.slug}`}>
-              <span className="absolute right-4 top-4 rounded-full bg-black/50 px-2.5 py-1 text-[10px] text-white/70 backdrop-blur-sm">{item.category}</span>
-              <div className="absolute bottom-4 right-4 grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-black/45 backdrop-blur-sm">
-                <Icon className="h-5 w-5 text-violet-200" />
-              </div>
-            </MarketplacePreviewArt>
-          </div>
-          <div className="flex flex-1 flex-col p-5 sm:p-6">
-            <div className="flex items-start justify-between gap-4"><div>
-              <h3 className="font-semibold">{item.name}</h3>
-              <p className="mt-1 text-sm text-white/40">by {item.creator}</p>
-            </div>
-              <span className="text-sm font-semibold">{item.price}</span>
-            </div>
-            <p className="mt-4 text-sm leading-6 text-white/50">{item.tagline}</p>
-            <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
-              <div className="flex items-center gap-3">
-                <Rating value={item.rating} />
-                <span className="text-xs text-white/40">{item.downloads}</span>
-              </div>
-              <Link to={`/marketplace/${item.slug}`} className="text-sm font-medium text-violet-300 transition hover:text-violet-200">View →</Link>
-            </div>
-          </div>
-        </article>
-      })}
-      </div>
-    </div>
-  </AnimatedSection>
+export default function MarketplacePreview(){
+  const {items,marketplaceOnline}=useMarketplaceCatalog();
+  const plugin=items[0];
+  if(!plugin)return null;
+  return <AnimatedSection className="page-shell py-24"><div className="overflow-hidden rounded-[30px] border border-white/10 bg-white/[.025]"><div className="grid lg:grid-cols-[.92fr_1.08fr]"><div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl border border-violet-400/20 bg-violet-400/[.08] text-violet-200"><PlugZap size={18}/></span><span className={`rounded-full border px-3 py-1 text-[11px] ${marketplaceOnline?'border-emerald-400/20 text-emerald-200':'border-white/10 text-white/45'}`}>{marketplaceOnline?'Live marketplace':'Verified catalog'}</span></div><p className="eyebrow mt-8">Control Deck Marketplace</p><h2 className="mt-4 text-3xl font-semibold tracking-[-.04em] sm:text-5xl">Extend your deck with verified integrations.</h2><p className="mt-5 max-w-xl text-sm leading-7 text-white/50">Browse official plugins from the website, add them to your account, and hand installation directly to the desktop app.</p><div className="mt-6 grid gap-3 text-sm text-white/55 sm:grid-cols-2"><span className="flex items-center gap-2"><CheckCircle2 size={15} className="text-emerald-300"/>Permissions shown first</span><span className="flex items-center gap-2"><CheckCircle2 size={15} className="text-emerald-300"/>Desktop install handoff</span></div><Link to="/marketplace" className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/90">Explore marketplace <ArrowRight size={15}/></Link></div><div className="border-t border-white/10 p-5 lg:border-l lg:border-t-0 lg:p-8"><MarketplacePreviewArt item={plugin} to={`/marketplace/${plugin.slug}`} className="h-full min-h-[360px] rounded-2xl"><div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-5 rounded-2xl border border-white/10 bg-black/65 p-5 backdrop-blur-xl"><div><p className="text-[10px] font-semibold uppercase tracking-[.17em] text-white/40">Official plugin</p><h3 className="mt-2 text-2xl font-semibold">{plugin.name}</h3><p className="mt-2 text-sm text-white/50">{plugin.tagline}</p></div><span className="shrink-0 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-black">Free</span></div></MarketplacePreviewArt></div></div></div></AnimatedSection>
 }

@@ -24,7 +24,7 @@ export default function MarketplaceShell() {
 
         <p className="mt-6 px-3 text-[10px] font-semibold uppercase tracking-[.18em] text-white/30">Products</p>
         <div className="mt-2 grid gap-1">
-          <NavLink to="/marketplace/control-deck" className={navClass}><span className="flex items-center gap-3"><Boxes size={16} />Control Deck</span></NavLink>
+          <NavLink to="/marketplace/control-deck" className={navClass}><span className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-lg border border-violet-400/20 bg-violet-400/[.08]"><Boxes size={15} className="text-violet-200"/></span><span><span className="block font-medium">Control Deck</span><span className="mt-0.5 block text-[10px] text-white/30">Official catalog</span></span></span><span className="h-2 w-2 rounded-full bg-emerald-400" title="Online"/></NavLink>
         </div>
 
         <p className="mt-6 px-3 text-[10px] font-semibold uppercase tracking-[.18em] text-white/30">Your Marketplace</p>
